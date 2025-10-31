@@ -180,13 +180,11 @@
         }
 
         .press-kit-layout {
-            display: grid;
-            grid-template-columns: 350px 1fr;
-            gap: 40px;
             background: white;
             padding: 40px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: auto;
         }
 
         .fact-sheet {
@@ -194,6 +192,10 @@
             padding: 30px;
             border-radius: 8px;
             border: 2px solid #4169e1;
+            float: left;
+            width: 350px;
+            margin-right: 40px;
+            margin-bottom: 40px;
         }
 
         .fact-sheet h2 {
@@ -289,6 +291,10 @@
         #features .game-description {
             font-size: 1.5249rem;
             margin-bottom: 5px;
+        }
+
+        #about-game {
+            clear: left;
         }
 
         .video-link {
@@ -714,13 +720,15 @@
             }
 
             .press-kit-layout {
-                grid-template-columns: 1fr;
                 padding: 20px 15px;
-                gap: 30px;
             }
 
             .fact-sheet {
                 padding: 20px;
+                float: none;
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 30px;
             }
 
             .fact-sheet h2 {
@@ -900,7 +908,6 @@
 
     <nav>
         <ul>
-            <li><a href="#welcome" class="nav-link" data-page="welcome">Welcome</a></li>
             <li><a href="#press-kit" class="nav-link" data-page="press-kit">Press Kit</a></li>
             <li><a href="#contact" class="nav-link" data-page="contact">Contact</a></li>
         </ul>
@@ -959,7 +966,23 @@
                     <div id="pitch">
                         <h2>Pitch</h2>
                         <p class="game-description">
-                            Command from above or fight on the front lines, leading the charge however you choose. Advance through large-scale battles, upgrade existing units or recruit new ones along the way. How you build your army depends on where you lead it - as different battlefields grant access to different units.
+                            The ancient magic has faded away and for the first time in centuries, the residents of Pine Valley will need to defend themselves. Raise an army to fight back the invaders before it's too late.
+                        </p>
+                        <p class="game-description">
+                            Seamlessly switch between commanding your troops from above or fighting alongside them on the front lines. Advance through large-scale battles, upgrade existing units or recruit new ones along the way. How you build your army depends on where you lead it - as different battlefields grant access to different units and rewards.
+                        </p>
+                    </div>
+
+                    <div id="short-descriptions">
+                        <h2>Short Descriptions</h2>
+                        <p class="game-description">
+                            Experience the chaos of battle through different perspectives - from the vulnerability of a foot soldier to the overwhelming strength of a rock golem. Each unit can affect the battle in their own way, whether it be holding the line or breaking through it.
+                        </p>
+                        <p class="game-description">
+                            Stay above the fray and let your soldiers do the work. Use commander abilities to influence the battle - spread out a crowd with a tornado or delete some enemies with a meteor shower.
+                        </p>
+                        <p class="game-description">
+                            Each round, choose your next battlefield carefully. Rewards after each victory are influenced by the environment of each battle.
                         </p>
                     </div>
 
@@ -967,44 +990,29 @@
                         <h2>Description</h2>
 
                         <p class="game-description">
-                        <strong>Protect Pine Valley</strong> is a strategy-action game where you defend the town of Pine Valley from enemy forces. The game allows you to switch between two gameplay modes.
-                    </p>
-
-                    <p class="game-description">
-                        In <strong>Commander Mode</strong>, view the battlefield from above and manage your defense strategy. Deploy troops, manage resources, and position your forces to counter incoming threats.
-                    </p>
-
-                    <p class="game-description">
-                        Switch to <strong>Soldier Mode</strong> to take direct control of any soldier in your army and fight enemies in third-person combat while your AI-controlled units continue executing your strategic commands.
-                    </p>
-
-                    <p class="game-description">
-                        Lead Pine Valley through strategic planning and direct combat action.
-                    </p>
-                    </div>
-
-                    <div id="short-descriptions">
-                        <h2>Short Descriptions</h2>
-                        <p class="game-description">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            Protect Pine Valley is a roguelite where you lead your army through a series of battles across different environments. During each battle, you're free to switch back and forth between two modes. In commander mode, you can survey the field from above and issue tactical orders to your troops. Or, you can enter the fray yourself in soldier mode, taking control of any of your units from a third-person perspective to turn the tide firsthand.
                         </p>
+
                         <p class="game-description">
-                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            Each run plays out across a branching map of possible battlefields. After each victory, you might be able to upgrade your troops, recruit new units, or unlock new abilities and bonuses for both commander and soldier modes. Be careful when plotting your path - the environment for each battle can influence the rewards and opportunities that await you.
+                        </p>
+
+                        <p class="game-description">
+                            Protect Pine Valley lets you approach each run in your own way. You can complete the game entirely from the commander's vantage or fight every battle firsthand in soldier mode or switch between the two as the situation demands. As you progress, you'll shape your own path of upgrades and advantages - maybe enhancing the units you control in soldier mode, or unlocking abilities and attacks that strengthen your influence in commander mode. How you choose to fight - and how you choose to Protect Pine Valley - is entirely up to you.
                         </p>
                     </div>
 
                     <div id="features">
                         <h2>Features</h2>
-                        <p class="game-description">• Large scale battles</p>
-                        <p class="game-description">• Different environments</p>
-                        <p class="game-description">• Various weather conditions</p>
-                        <p class="game-description">• Troop Upgrades</p>
+                        <p class="game-description">• Epic battles capable of featuring thousands of units</p>
+                        <p class="game-description">• Various environments and weather conditions</p>
+                        <p class="game-description">• Upgrades for different playstyles - whether you favor commanding your forces or fighting with them on the battlefield</p>
                     </div>
 
                     <div id="history">
                         <h2>History</h2>
                         <p class="game-description">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            Protect Pine Valley has been in development since late 2023. Beginning as a side project, it became the developer's full time focus in early 2025.
                         </p>
                     </div>
                 </main>
@@ -1053,58 +1061,6 @@
                 </div> <!-- End main content area -->
             </div> <!-- End home-layout -->
         </div> <!-- End container -->
-    </div>
-
-    <!-- WELCOME PAGE -->
-    <div id="welcome-page" class="page-section">
-        <div class="container">
-            <section>
-                <h2>The Story</h2>
-                <p>
-                    Pine Valley is a town in a forested valley. The inhabitants have lived there for generations.
-                </p>
-                <p>
-                    When hostile forces attack from beyond the valley's borders, you are appointed as commander. Rally your troops and protect the town from waves of enemies.
-                </p>
-                <p>
-                    Lead from the command center or fight alongside your soldiers on the front lines.
-                </p>
-            </section>
-
-            <section>
-                <h2>Gameplay Features</h2>
-
-                <h3>Dual Gameplay Modes</h3>
-                <p>
-                    Switch between strategic overview and ground-level action. Plan your defense from above or control soldiers directly.
-                </p>
-
-                <h3>Strategy</h3>
-                <p>
-                    In Commander Mode, manage resources, deploy troops, and position units. Place defensive structures and coordinate unit movements.
-                </p>
-
-                <h3>Action</h3>
-                <p>
-                    Switch to Soldier Mode for third-person combat. Take control of any unit in your army with direct shooting mechanics.
-                </p>
-
-                <h3>Challenge</h3>
-                <p>
-                    Face waves of enemies with different abilities and tactics.
-                </p>
-            </section>
-
-            <section>
-                <h2>Development Vision</h2>
-                <p>
-                    Protect Pine Valley combines real-time strategy and third-person action gameplay.
-                </p>
-                <p>
-                    Built in Unity and developed in Boston, the game focuses on both strategic thinking and player skill.
-                </p>
-            </section>
-        </div>
     </div>
 
     <!-- CONTACT PAGE -->
