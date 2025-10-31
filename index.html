@@ -60,8 +60,8 @@
             display: inline-block;
             cursor: pointer;
             transition: transform 0.3s;
-            max-width: 552px;
-            width: 80%;
+            width: 45vw;
+            max-width: 497px;
         }
 
         .video-banner a:hover {
@@ -69,10 +69,25 @@
         }
 
         .video-banner img {
-            max-width: 650px;
             width: 100%;
             height: auto;
             filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8));
+        }
+
+        /* Portrait mode (mobile phones) - smaller logo */
+        @media (max-aspect-ratio: 1/1) {
+            .video-banner a {
+                width: 54vw;
+                max-width: 270px;
+            }
+        }
+
+        /* Very narrow portrait (typical phones) - even smaller logo */
+        @media (max-aspect-ratio: 9/16) {
+            .video-banner a {
+                width: 58.5vw;
+                max-width: 252px;
+            }
         }
 
         nav {
@@ -587,15 +602,6 @@
                 max-height: 350px;
             }
 
-            .video-banner a {
-                max-width: 332px;
-                width: 100%;
-            }
-
-            .video-banner img {
-                width: 100%;
-            }
-
             .home-layout {
                 grid-template-columns: 1fr;
                 gap: 20px;
@@ -791,15 +797,15 @@
 
     <nav>
         <ul>
-            <li><a href="#about" class="nav-link" data-page="about">Welcome</a></li>
-            <li><a href="#home" class="nav-link" data-page="home">Press Kit</a></li>
+            <li><a href="#welcome" class="nav-link" data-page="welcome">Welcome</a></li>
+            <li><a href="#press-kit" class="nav-link" data-page="press-kit">Press Kit</a></li>
             <li><a href="#team" class="nav-link" data-page="team">Team</a></li>
             <li><a href="#contact" class="nav-link" data-page="contact">Contact</a></li>
         </ul>
     </nav>
 
-    <!-- HOME PAGE -->
-    <div id="home-page" class="page-section">
+    <!-- PRESS KIT PAGE -->
+    <div id="press-kit-page" class="page-section">
         <div class="container">
             <div class="home-layout">
                 <!-- Page Navigation Sidebar -->
@@ -819,7 +825,7 @@
 
                             <h3>Developer</h3>
                     <div class="fact-item">
-                        <p>Based in Boston, MA</p>
+                        <p>BoomTown Snipes, LLC</p>
                     </div>
 
                     <h3>Release Date</h3>
@@ -935,8 +941,8 @@
         </div> <!-- End container -->
     </div>
 
-    <!-- ABOUT PAGE -->
-    <div id="about-page" class="page-section">
+    <!-- WELCOME PAGE -->
+    <div id="welcome-page" class="page-section">
         <div class="container">
             <section>
                 <h2>The Story</h2>
@@ -1104,12 +1110,6 @@
 
             // Update URL without reload
             history.pushState({ page: pageName }, '', `#${pageName}`);
-
-            // Scroll to top of content (below video banner and nav)
-            const nav = document.querySelector('nav');
-            const videoBanner = document.querySelector('.video-banner');
-            const scrollPosition = videoBanner.offsetHeight + nav.offsetHeight;
-            window.scrollTo({ top: scrollPosition, behavior: 'smooth' });
         }
 
         // Click handlers for navigation
@@ -1118,6 +1118,12 @@
                 e.preventDefault();
                 const pageName = link.dataset.page;
                 showPage(pageName);
+
+                // Scroll to top of content (below video banner and nav) only on click
+                const nav = document.querySelector('nav');
+                const videoBanner = document.querySelector('.video-banner');
+                const scrollPosition = videoBanner.offsetHeight + nav.offsetHeight;
+                window.scrollTo({ top: scrollPosition, behavior: 'smooth' });
             });
         });
 
@@ -1126,19 +1132,19 @@
             if (e.state && e.state.page) {
                 showPage(e.state.page);
             } else {
-                // Default to home if no state
+                // Default to press-kit if no state
                 const hash = window.location.hash.slice(1);
-                showPage(hash || 'home');
+                showPage(hash || 'press-kit');
             }
         });
 
         // Handle initial page load with hash - use DOMContentLoaded for faster initial load
         document.addEventListener('DOMContentLoaded', () => {
             const hash = window.location.hash.slice(1);
-            if (hash && ['home', 'about', 'media', 'team', 'contact'].includes(hash)) {
+            if (hash && ['press-kit', 'welcome', 'media', 'team', 'contact'].includes(hash)) {
                 showPage(hash);
             } else {
-                showPage('home');
+                showPage('press-kit');
             }
         });
 
