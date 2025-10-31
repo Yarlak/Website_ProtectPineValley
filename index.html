@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Neuton:ital,wght@0,200;0,300;0,400;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -52,11 +54,23 @@
             pointer-events: none;
         }
 
-        .video-banner img {
+        .video-banner a {
             position: relative;
             z-index: 10;
-            max-width: 500px;
+            display: inline-block;
+            cursor: pointer;
+            transition: transform 0.3s;
+            max-width: 552px;
             width: 80%;
+        }
+
+        .video-banner a:hover {
+            transform: scale(1.05);
+        }
+
+        .video-banner img {
+            max-width: 650px;
+            width: 100%;
             height: auto;
             filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8));
         }
@@ -130,7 +144,7 @@
 
         .page-nav h3 {
             color: #4169e1;
-            font-size: 1.4rem;
+            font-size: 1.86rem;
             margin-bottom: 20px;
             border-bottom: 2px solid #4169e1;
             padding-bottom: 10px;
@@ -141,8 +155,8 @@
             color: #4169e1;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
-            padding: 10px 0;
+            font-size: 1.43rem;
+            padding: 5px 0;
             transition: color 0.3s;
         }
 
@@ -177,13 +191,13 @@
 
         .fact-sheet h3 {
             color: #4169e1;
-            font-size: 1.3rem;
-            margin-top: 25px;
-            margin-bottom: 10px;
+            font-size: 1.44rem;
+            margin-top: 17.5px;
+            margin-bottom: 2px;
         }
 
         .fact-item {
-            margin-bottom: 15px;
+            margin-bottom: 10.5px;
         }
 
         .fact-item strong {
@@ -196,6 +210,7 @@
 
         .fact-item p {
             margin: 0;
+            font-size: 1.2rem;
         }
 
         .main-content h2 {
@@ -339,6 +354,79 @@
 
         .screenshots-grid img:hover {
             transform: scale(1.05);
+            cursor: pointer;
+        }
+
+        /* Lightbox Modal */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .lightbox-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            font-size: 3rem;
+            padding: 20px 25px;
+            cursor: pointer;
+            transition: background 0.3s;
+            border-radius: 5px;
+            user-select: none;
+        }
+
+        .lightbox-arrow:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .lightbox-arrow.prev {
+            left: 20px;
+        }
+
+        .lightbox-arrow.next {
+            right: 20px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .lightbox-close:hover {
+            opacity: 0.7;
         }
 
         .download-section {
@@ -499,9 +587,13 @@
                 max-height: 350px;
             }
 
+            .video-banner a {
+                max-width: 332px;
+                width: 100%;
+            }
+
             .video-banner img {
-                max-width: 300px;
-                width: 90%;
+                width: 100%;
             }
 
             .home-layout {
@@ -514,12 +606,12 @@
             }
 
             .page-nav h3 {
-                font-size: 1.2rem;
+                font-size: 1.69rem;
             }
 
             .page-nav a {
-                font-size: 1rem;
-                padding: 8px 0;
+                font-size: 1.3rem;
+                padding: 4px 0;
             }
 
             nav ul {
@@ -556,8 +648,13 @@
             }
 
             .fact-sheet h3 {
+                font-size: 1.32rem;
+                margin-top: 14px;
+                margin-bottom: 2px;
+            }
+
+            .fact-item p {
                 font-size: 1.1rem;
-                margin-top: 20px;
             }
 
             .main-content h2 {
@@ -687,25 +784,28 @@
             allow="autoplay; encrypted-media"
             allowfullscreen>
         </iframe>
-        <img src="logo_0.png" alt="Protect Pine Valley Logo">
+        <a href="https://store.steampowered.com/app/3189670/Protect_Pine_Valley/" target="_blank">
+            <img src="logo_0.png" alt="Protect Pine Valley Logo">
+        </a>
     </div>
 
     <nav>
         <ul>
-            <li><a href="#home" class="nav-link active" data-page="home">Home</a></li>
-            <li><a href="#about" class="nav-link" data-page="about">About</a></li>
+            <li><a href="#about" class="nav-link" data-page="about">Welcome</a></li>
+            <li><a href="#home" class="nav-link" data-page="home">Press Kit</a></li>
             <li><a href="#team" class="nav-link" data-page="team">Team</a></li>
             <li><a href="#contact" class="nav-link" data-page="contact">Contact</a></li>
         </ul>
     </nav>
 
     <!-- HOME PAGE -->
-    <div id="home-page" class="page-section active">
+    <div id="home-page" class="page-section">
         <div class="container">
             <div class="home-layout">
                 <!-- Page Navigation Sidebar -->
                 <aside class="page-nav">
-                    <h3>Jump to</h3>
+                    <h3>Jump To</h3>
+                    <a href="#about-game">About</a>
                     <a href="#trailer">Trailer</a>
                     <a href="#screenshots">Screenshots</a>
                     <a href="#logos">Logos</a>
@@ -739,17 +839,9 @@
 
                     <h3>Genre</h3>
                     <div class="fact-item">
-                        <p>Real-Time Strategy / Action</p>
-                    </div>
-
-                    <h3>Game Modes</h3>
-                    <div class="fact-item">
-                        <p><strong>Commander Mode</strong></p>
-                        <p>Command and strategize from above</p>
-                    </div>
-                    <div class="fact-item">
-                        <p><strong>Soldier Mode</strong></p>
-                        <p>Take direct control and fight on the battlefield</p>
+                        <p>• Real-Time Strategy</p>
+                        <p>• Action</p>
+                        <p>• Roguelike</p>
                     </div>
 
                     <h3>Features</h3>
@@ -761,7 +853,7 @@
                     </div>
                 </aside>
 
-                <main class="main-content">
+                <main class="main-content" id="about-game">
                     <h2>About the Game</h2>
 
                     <div class="video-embed">
@@ -776,19 +868,19 @@
                     <a href="https://youtu.be/tlJcCCJpBlI" target="_blank" class="video-link">Watch Full Trailer on YouTube</a>
 
                     <p class="game-description">
-                        <strong>Protect Pine Valley</strong> is an innovative hybrid strategy-action game that puts you in command of defending the peaceful town of Pine Valley from relentless enemy forces. Experience the perfect blend of tactical depth and visceral combat as you seamlessly switch between two distinct gameplay modes.
+                        <strong>Protect Pine Valley</strong> is a strategy-action game where you defend the town of Pine Valley from enemy forces. The game allows you to switch between two gameplay modes.
                     </p>
 
                     <p class="game-description">
-                        In <strong>Commander Mode</strong>, take a bird's-eye view of the battlefield and orchestrate your defense strategy. Deploy troops, manage resources, and position your forces to counter incoming threats. Every decision matters as you coordinate multiple units across dynamic battlefields.
+                        In <strong>Commander Mode</strong>, view the battlefield from above and manage your defense strategy. Deploy troops, manage resources, and position your forces to counter incoming threats.
                     </p>
 
                     <p class="game-description">
-                        When the action heats up, instantly switch to <strong>Soldier Mode</strong> and dive into the thick of battle. Take direct control of any soldier in your army and fight enemies with precision aim and fast-paced combat. Feel the intensity of frontline warfare while your AI-controlled units continue executing your strategic commands.
+                        Switch to <strong>Soldier Mode</strong> to take direct control of any soldier in your army and fight enemies in third-person combat while your AI-controlled units continue executing your strategic commands.
                     </p>
 
                     <p class="game-description">
-                        Will you lead Pine Valley to victory through careful planning, decisive action, or a combination of both? The choice is yours in this unique gaming experience that delivers both strategic depth and action-packed thrills.
+                        Lead Pine Valley through strategic planning and direct combat action.
                     </p>
                 </main>
             </div>
@@ -805,14 +897,13 @@
                             allowfullscreen>
                         </iframe>
                     </div>
-                    <p style="font-size: 1.2rem;">Official gameplay trailer showcasing Commander Mode and Soldier Mode</p>
+                    <p style="font-size: 1.2rem;">Gameplay trailer showing Commander Mode and Soldier Mode</p>
                 </div>
             </section>
 
             <!-- SCREENSHOTS SECTION -->
             <section id="screenshots">
                 <h2>Screenshots</h2>
-                <p style="font-size: 1.1rem; margin-bottom: 20px;">High-resolution screenshots from Protect Pine Valley</p>
 
                 <div class="screenshots-grid">
                     <!-- Screenshots loaded dynamically via JavaScript -->
@@ -821,7 +912,7 @@
                 <div class="download-section">
                     <h3>Download Press Kit</h3>
                     <p style="margin-bottom: 20px;">Download high-resolution images, logos, and other press materials</p>
-                    <a href="#" class="download-btn">Download All Screenshots (ZIP)</a>
+                    <a href="#" class="download-btn" onclick="downloadScreenshotsZip(event)">Download All Screenshots (ZIP)</a>
                     <a href="#" class="download-btn">Download Logo Pack</a>
                     <a href="#" class="download-btn">Download Press Kit (PDF)</a>
                 </div>
@@ -850,13 +941,13 @@
             <section>
                 <h2>The Story</h2>
                 <p>
-                    Pine Valley was once a peaceful town nestled in the heart of a lush forest. For generations, its inhabitants lived in harmony with nature, their homes protected by ancient pine trees that stood as silent guardians over the valley.
+                    Pine Valley is a town in a forested valley. The inhabitants have lived there for generations.
                 </p>
                 <p>
-                    But peace never lasts forever. When hostile forces emerged from beyond the valley's borders, threatening to destroy everything the people of Pine Valley held dear, a call went out for defenders. As the newly appointed commander, you must rally your troops and protect the town from wave after wave of increasingly dangerous enemies.
+                    When hostile forces attack from beyond the valley's borders, you are appointed as commander. Rally your troops and protect the town from waves of enemies.
                 </p>
                 <p>
-                    The fate of Pine Valley rests in your hands. Will you lead from the command center, or fight alongside your soldiers on the front lines? The choice is yours.
+                    Lead from the command center or fight alongside your soldiers on the front lines.
                 </p>
             </section>
 
@@ -865,32 +956,32 @@
 
                 <h3>Dual Gameplay Modes</h3>
                 <p>
-                    Experience the unique freedom of switching between strategic overview and ground-level action at any moment. Plan your defense from above, then instantly jump into the action to turn the tide of battle personally.
+                    Switch between strategic overview and ground-level action. Plan your defense from above or control soldiers directly.
                 </p>
 
-                <h3>Strategic Depth</h3>
+                <h3>Strategy</h3>
                 <p>
-                    In Commander Mode, you'll need to master resource management, troop deployment, and tactical positioning. Place defensive structures, coordinate unit movements, and anticipate enemy attack patterns to create an impenetrable defense.
+                    In Commander Mode, manage resources, deploy troops, and position units. Place defensive structures and coordinate unit movements.
                 </p>
 
-                <h3>Intense Action</h3>
+                <h3>Action</h3>
                 <p>
-                    Switch to Soldier Mode to experience fast-paced combat from a third-person perspective. Take control of any unit in your army and fight with skill-based shooting mechanics. Your actions on the battlefield can change the course of the entire battle.
+                    Switch to Soldier Mode for third-person combat. Take control of any unit in your army with direct shooting mechanics.
                 </p>
 
-                <h3>Progressive Challenge</h3>
+                <h3>Challenge</h3>
                 <p>
-                    Face increasingly difficult waves of enemies, each with unique abilities and tactics. Adapt your strategy and refine your combat skills to overcome each new threat to Pine Valley.
+                    Face waves of enemies with different abilities and tactics.
                 </p>
             </section>
 
             <section>
                 <h2>Development Vision</h2>
                 <p>
-                    Protect Pine Valley was born from a desire to merge two beloved gaming genres: real-time strategy and third-person action. We believe that players shouldn't have to choose between being a strategic mastermind or an action hero—they should be able to be both.
+                    Protect Pine Valley combines real-time strategy and third-person action gameplay.
                 </p>
                 <p>
-                    Built in Unity and developed by a passionate indie team in Boston, our goal is to create an experience that respects both strategic thinking and player skill, offering a game that's as rewarding to plan as it is to play.
+                    Built in Unity and developed in Boston, the game focuses on both strategic thinking and player skill.
                 </p>
             </section>
         </div>
@@ -909,17 +1000,17 @@
                     <div class="team-member-photo">MR</div>
                     <h3>Matt Russiello</h3>
                     <p class="role">Lead Engineer</p>
-                    <p>Matt is the creator and lead engineer behind Protect Pine Valley, bringing his passion for strategy and action games together to create a unique hybrid gaming experience.</p>
+                    <p>Matt is the creator and lead engineer behind Protect Pine Valley.</p>
                 </div>
             </section>
 
             <section>
                 <h2>Our Studio</h2>
                 <p style="font-size: 1.2rem; line-height: 1.8;">
-                    Based in Boston, Massachusetts, we're dedicated to creating innovative gameplay experiences that push the boundaries of what's possible in hybrid strategy-action games.
+                    Based in Boston, Massachusetts, developing strategy-action games.
                 </p>
                 <p style="font-size: 1.2rem; line-height: 1.8; margin-top: 20px;">
-                    We're committed to building a community around Protect Pine Valley and listening to player feedback throughout development.
+                    Building a community around Protect Pine Valley and listening to player feedback throughout development.
                 </p>
             </section>
         </div>
@@ -972,6 +1063,16 @@
         </div>
     </div>
 
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <button class="lightbox-arrow prev" onclick="changeImage(-1)">&#10094;</button>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="">
+        </div>
+        <button class="lightbox-arrow next" onclick="changeImage(1)">&#10095;</button>
+    </div>
+
     <footer>
         <p>Contact: <a href="mailto:support@boomtownsnipes.com" style="color: #6495ed;">support@boomtownsnipes.com</a></p>
     </footer>
@@ -1003,6 +1104,12 @@
 
             // Update URL without reload
             history.pushState({ page: pageName }, '', `#${pageName}`);
+
+            // Scroll to top of content (below video banner and nav)
+            const nav = document.querySelector('nav');
+            const videoBanner = document.querySelector('.video-banner');
+            const scrollPosition = videoBanner.offsetHeight + nav.offsetHeight;
+            window.scrollTo({ top: scrollPosition, behavior: 'smooth' });
         }
 
         // Click handlers for navigation
@@ -1025,8 +1132,8 @@
             }
         });
 
-        // Handle initial page load with hash
-        window.addEventListener('load', () => {
+        // Handle initial page load with hash - use DOMContentLoaded for faster initial load
+        document.addEventListener('DOMContentLoaded', () => {
             const hash = window.location.hash.slice(1);
             if (hash && ['home', 'about', 'media', 'team', 'contact'].includes(hash)) {
                 showPage(hash);
@@ -1047,11 +1154,64 @@
 
         // Generate screenshot grid
         const screenshotsGrid = document.querySelector('.screenshots-grid');
-        screenshots.forEach(screenshot => {
+        screenshots.forEach((screenshot, index) => {
             const img = document.createElement('img');
             img.src = `screenshots/${screenshot.file}`;
             img.alt = screenshot.alt;
+            img.onclick = () => openLightbox(index);
             screenshotsGrid.appendChild(img);
+        });
+
+        // Lightbox functionality
+        let currentImageIndex = 0;
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        function openLightbox(index) {
+            currentImageIndex = index;
+            lightboxImg.src = `screenshots/${screenshots[index].file}`;
+            lightboxImg.alt = screenshots[index].alt;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+
+        function changeImage(direction) {
+            currentImageIndex += direction;
+
+            // Loop around if at the beginning or end
+            if (currentImageIndex < 0) {
+                currentImageIndex = screenshots.length - 1;
+            } else if (currentImageIndex >= screenshots.length) {
+                currentImageIndex = 0;
+            }
+
+            lightboxImg.src = `screenshots/${screenshots[currentImageIndex].file}`;
+            lightboxImg.alt = screenshots[currentImageIndex].alt;
+        }
+
+        // Close lightbox when clicking outside the image
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (lightbox.classList.contains('active')) {
+                if (e.key === 'ArrowLeft') {
+                    changeImage(-1);
+                } else if (e.key === 'ArrowRight') {
+                    changeImage(1);
+                } else if (e.key === 'Escape') {
+                    closeLightbox();
+                }
+            }
         });
 
         // Handle section navigation within home page
@@ -1066,6 +1226,43 @@
                 }
             });
         });
+
+        // Download all screenshots as ZIP
+        async function downloadScreenshotsZip(event) {
+            event.preventDefault();
+
+            const zip = new JSZip();
+            const folder = zip.folder("screenshots");
+
+            // Show loading state
+            const btn = event.target;
+            const originalText = btn.textContent;
+            btn.textContent = "Creating ZIP...";
+            btn.style.pointerEvents = "none";
+
+            try {
+                // Fetch and add each screenshot to the zip
+                for (const screenshot of screenshots) {
+                    const response = await fetch(`screenshots/${screenshot.file}`);
+                    const blob = await response.blob();
+                    folder.file(screenshot.file, blob);
+                }
+
+                // Generate and download the zip file
+                const content = await zip.generateAsync({ type: "blob" });
+                saveAs(content, "protect-pine-valley-screenshots.zip");
+
+                btn.textContent = originalText;
+                btn.style.pointerEvents = "auto";
+            } catch (error) {
+                console.error("Error creating zip:", error);
+                btn.textContent = "Error - Try Again";
+                btn.style.pointerEvents = "auto";
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                }, 2000);
+            }
+        }
     </script>
 </body>
 </html>
