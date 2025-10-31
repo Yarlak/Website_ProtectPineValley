@@ -228,6 +228,31 @@
             font-size: 1.2rem;
         }
 
+        .platform-item {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .platform-item:hover {
+            opacity: 0.8;
+        }
+
+        .platform-logo {
+            height: 33px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .platform-item span {
+            font-size: 1.2rem;
+            font-family: Arial, sans-serif;
+            color: #D4AF37;
+            font-weight: 600;
+        }
+
         .main-content h2 {
             color: #4169e1;
             font-size: 2.5rem;
@@ -272,7 +297,7 @@
         section {
             background: white;
             margin: 40px 0;
-            padding: 60px 40px;
+            padding: 30px 40px 60px 40px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
@@ -298,10 +323,32 @@
             margin-bottom: 20px;
         }
 
+        .studio-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: nowrap;
+        }
+
+        .studio-logo {
+            width: 100px;
+            height: auto;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .studio-info p {
+            margin: 0;
+            text-align: left;
+            white-space: nowrap;
+        }
+
         .team-member {
             text-align: center;
-            padding: 40px;
-            border: 2px solid #4169e1;
+            padding: 32px;
+            border: 6px solid #4169e1;
             border-radius: 8px;
             max-width: 500px;
             margin: 40px auto;
@@ -324,13 +371,13 @@
         .team-member h3 {
             color: #4169e1;
             font-size: 2rem;
-            margin-bottom: 10px;
+            margin-bottom: 7px;
         }
 
         .team-member .role {
             color: #6495ed;
             font-weight: 600;
-            font-size: 1.3rem;
+            font-size: 1.56rem;
             margin-bottom: 20px;
         }
 
@@ -340,11 +387,15 @@
             color: #666;
         }
 
-        .screenshots-grid {
+        .screenshots-grid, .logos-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 30px;
+        }
+
+        .logos-grid {
+            margin-bottom: 40px;
         }
 
         .screenshot-placeholder {
@@ -359,7 +410,7 @@
             font-size: 1.2rem;
         }
 
-        .screenshots-grid img {
+        .screenshots-grid img, .logos-grid img {
             width: 100%;
             height: auto;
             border-radius: 8px;
@@ -367,7 +418,7 @@
             transition: transform 0.3s;
         }
 
-        .screenshots-grid img:hover {
+        .screenshots-grid img:hover, .logos-grid img:hover {
             transform: scale(1.05);
             cursor: pointer;
         }
@@ -445,7 +496,7 @@
         }
 
         .download-section {
-            background: #f9f9f9;
+            background: transparent;
             padding: 30px;
             border-radius: 8px;
             margin-top: 30px;
@@ -473,36 +524,44 @@
             background: #6495ed;
         }
 
-        .contact-box {
-            padding: 40px;
-            background: linear-gradient(135deg, #4169e1 0%, #6495ed 100%);
-            color: white;
-            border-radius: 8px;
-            text-align: center;
-            max-width: 600px;
+        .contact-box-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin: 30px auto;
+            max-width: 100%;
+            padding: 0 20px;
         }
 
-        .contact-box h3 {
-            margin-bottom: 20px;
-            font-size: 2rem;
+        .contact-side-wrapper {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .contact-box p {
-            margin-bottom: 15px;
-            font-size: 1.2rem;
+        .contact-side-image {
+            width: 250px;
+            height: auto;
+            object-fit: contain;
         }
 
-        .contact-box a {
-            color: white;
-            text-decoration: none;
+        .contact-email-simple {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .contact-email-simple a {
+            color: black;
+            text-decoration: underline;
             font-weight: 600;
-            font-size: 1.3rem;
-            border-bottom: 2px solid white;
+            font-size: 2.5rem;
         }
 
-        .contact-box a:hover {
-            opacity: 0.8;
+        .contact-email-simple a:hover {
+            opacity: 0.7;
         }
 
         .social-links {
@@ -663,6 +722,14 @@
                 font-size: 1.1rem;
             }
 
+            .platform-logo {
+                height: 29px;
+            }
+
+            .platform-item span {
+                font-size: 1.1rem;
+            }
+
             .main-content h2 {
                 font-size: 1.8rem;
             }
@@ -686,7 +753,7 @@
             }
 
             section {
-                padding: 30px 20px;
+                padding: 20px 20px 30px 20px;
                 margin: 20px 0;
             }
 
@@ -702,6 +769,21 @@
 
             section p {
                 font-size: 1rem;
+            }
+
+            .studio-logo {
+                width: 60px;
+            }
+
+            .studio-info {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .studio-info p {
+                font-size: 1rem;
+                white-space: normal;
+                text-align: center;
             }
 
             .team-member {
@@ -727,7 +809,7 @@
                 font-size: 0.95rem;
             }
 
-            .screenshots-grid {
+            .screenshots-grid, .logos-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
@@ -746,20 +828,21 @@
                 margin: 10px 5px;
             }
 
-            .contact-box {
-                padding: 30px 20px;
+            .contact-box-container {
+                flex-direction: column;
+                gap: 20px;
             }
 
-            .contact-box h3 {
+            .contact-side-wrapper {
+                flex: none;
+            }
+
+            .contact-side-image {
+                width: 187px;
+            }
+
+            .contact-email-simple a {
                 font-size: 1.5rem;
-            }
-
-            .contact-box p {
-                font-size: 1rem;
-            }
-
-            .contact-box a {
-                font-size: 1.1rem;
             }
 
             .social-link {
@@ -799,7 +882,6 @@
         <ul>
             <li><a href="#welcome" class="nav-link" data-page="welcome">Welcome</a></li>
             <li><a href="#press-kit" class="nav-link" data-page="press-kit">Press Kit</a></li>
-            <li><a href="#team" class="nav-link" data-page="team">Team</a></li>
             <li><a href="#contact" class="nav-link" data-page="contact">Contact</a></li>
         </ul>
     </nav>
@@ -811,8 +893,8 @@
                 <!-- Page Navigation Sidebar -->
                 <aside class="page-nav">
                     <h3>Jump To</h3>
-                    <a href="#about-game">About</a>
-                    <a href="#trailer">Trailer</a>
+                    <a href="#pitch">Fact Sheet</a>
+                    <a href="#trailer">Videos</a>
                     <a href="#screenshots">Screenshots</a>
                     <a href="#logos">Logos</a>
                 </aside>
@@ -833,9 +915,11 @@
                         <p>TBA 2026</p>
                     </div>
 
-                    <h3>Platforms</h3>
+                    <h3>Platform</h3>
                     <div class="fact-item">
-                        <p>PC (Windows)</p>
+                        <a href="https://store.steampowered.com/app/3189670/Protect_Pine_Valley/" target="_blank" class="platform-item">
+                            <img src="steam_logo.png" alt="Steam" class="platform-logo">
+                        </a>
                     </div>
 
                     <h3>Engine</h3>
@@ -859,21 +943,18 @@
                     </div>
                 </aside>
 
-                <main class="main-content" id="about-game">
-                    <h2>About the Game</h2>
-
-                    <div class="video-embed">
-                        <iframe
-                            src="https://www.youtube.com/embed/tlJcCCJpBlI"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen>
-                        </iframe>
+                <main class="main-content">
+                    <div id="pitch">
+                        <h2>Pitch</h2>
+                        <p class="game-description">
+                            A unique blend of real-time strategy and third-person action gameplay that puts you in control of both the battlefield and individual soldiers.
+                        </p>
                     </div>
 
-                    <a href="https://youtu.be/tlJcCCJpBlI" target="_blank" class="video-link">Watch Full Trailer on YouTube</a>
+                    <div id="about-game">
+                        <h2>About the Game</h2>
 
-                    <p class="game-description">
+                        <p class="game-description">
                         <strong>Protect Pine Valley</strong> is a strategy-action game where you defend the town of Pine Valley from enemy forces. The game allows you to switch between two gameplay modes.
                     </p>
 
@@ -888,12 +969,13 @@
                     <p class="game-description">
                         Lead Pine Valley through strategic planning and direct combat action.
                     </p>
+                    </div>
                 </main>
             </div>
 
             <!-- TRAILER SECTION -->
             <section id="trailer">
-                <h2>Trailer & Gameplay Videos</h2>
+                <h2>Videos</h2>
                 <div class="video-section">
                     <div class="video-embed">
                         <iframe
@@ -903,7 +985,6 @@
                             allowfullscreen>
                         </iframe>
                     </div>
-                    <p style="font-size: 1.2rem;">Gameplay trailer showing Commander Mode and Soldier Mode</p>
                 </div>
             </section>
 
@@ -916,24 +997,20 @@
                 </div>
 
                 <div class="download-section">
-                    <h3>Download Press Kit</h3>
-                    <p style="margin-bottom: 20px;">Download high-resolution images, logos, and other press materials</p>
                     <a href="#" class="download-btn" onclick="downloadScreenshotsZip(event)">Download All Screenshots (ZIP)</a>
-                    <a href="#" class="download-btn">Download Logo Pack</a>
-                    <a href="#" class="download-btn">Download Press Kit (PDF)</a>
                 </div>
             </section>
 
             <!-- LOGOS SECTION -->
             <section id="logos">
-                <h2>Game Logo</h2>
-                <p style="font-size: 1.1rem; margin-bottom: 20px;">Official logo for Protect Pine Valley - Available in multiple formats</p>
+                <h2>Logos and Capsules</h2>
+
+                <div class="logos-grid marketing-images-grid">
+                    <!-- Marketing images loaded dynamically via JavaScript -->
+                </div>
 
                 <div class="download-section">
-                    <p style="margin-bottom: 20px;"><strong>Available Formats:</strong> PNG (transparent), SVG, EPS</p>
-                    <a href="#" class="download-btn">Download Logo (Light)</a>
-                    <a href="#" class="download-btn">Download Logo (Dark)</a>
-                    <a href="#" class="download-btn">Download Logo (Full Color)</a>
+                    <a href="#" class="download-btn" onclick="downloadMarketingImagesZip(event)">Download All Logos and Capsules (ZIP)</a>
                 </div>
             </section>
                 </div> <!-- End main content area -->
@@ -993,61 +1070,23 @@
         </div>
     </div>
 
-    <!-- TEAM PAGE -->
-    <div id="team-page" class="page-section">
-        <div class="container">
-            <section>
-                <h2>Development Team</h2>
-                <p style="font-size: 1.2rem; margin-bottom: 30px; text-align: center;">
-                    Protect Pine Valley is being developed by an indie developer based in Boston, Massachusetts.
-                </p>
-
-                <div class="team-member">
-                    <div class="team-member-photo">MR</div>
-                    <h3>Matt Russiello</h3>
-                    <p class="role">Lead Engineer</p>
-                    <p>Matt is the creator and lead engineer behind Protect Pine Valley.</p>
-                </div>
-            </section>
-
-            <section>
-                <h2>Our Studio</h2>
-                <p style="font-size: 1.2rem; line-height: 1.8;">
-                    Based in Boston, Massachusetts, developing strategy-action games.
-                </p>
-                <p style="font-size: 1.2rem; line-height: 1.8; margin-top: 20px;">
-                    Building a community around Protect Pine Valley and listening to player feedback throughout development.
-                </p>
-            </section>
-        </div>
-    </div>
-
     <!-- CONTACT PAGE -->
     <div id="contact-page" class="page-section">
         <div class="container">
             <section>
                 <h2>Get In Touch</h2>
-                <p style="font-size: 1.2rem; margin-bottom: 30px; text-align: center;">
-                    Have questions, feedback, or press inquiries? We'd love to hear from you!
-                </p>
 
-                <div class="contact-box">
-                    <h3>Contact</h3>
-                    <p>For all inquiries</p>
-                    <p><a href="mailto:support@boomtownsnipes.com">support@boomtownsnipes.com</a></p>
+                <div class="contact-box-container">
+                    <div class="contact-side-wrapper">
+                        <img src="contact_pic_left.png" alt="Contact Left" class="contact-side-image">
+                    </div>
+                    <div class="contact-email-simple">
+                        <a href="mailto:support@boomtownsnipes.com">support@boomtownsnipes.com</a>
+                    </div>
+                    <div class="contact-side-wrapper">
+                        <img src="contact_pic_right.png" alt="Contact Right" class="contact-side-image">
+                    </div>
                 </div>
-
-                <div class="info-section">
-                    <h3>Press Kit & Media Assets</h3>
-                    <p>Looking for screenshots, logos, or other media assets? Click the <strong>Media</strong> link above to access high-resolution images and press materials.</p>
-                </div>
-            </section>
-
-            <section>
-                <h2>Connect With Us</h2>
-                <p style="font-size: 1.2rem; text-align: center; margin-bottom: 30px;">
-                    Follow our development journey and stay updated on the latest news
-                </p>
 
                 <div class="social-links">
                     <a href="#" class="social-link" title="Twitter">𝕏</a>
@@ -1059,13 +1098,6 @@
                 </div>
             </section>
 
-            <section>
-                <h2>Studio Location</h2>
-                <div class="info-section">
-                    <h3>Based in Boston, Massachusetts</h3>
-                    <p>We're proud to be part of Boston's vibrant indie game development community.</p>
-                </div>
-            </section>
         </div>
     </div>
 
@@ -1080,7 +1112,7 @@
     </div>
 
     <footer>
-        <p>Contact: <a href="mailto:support@boomtownsnipes.com" style="color: #6495ed;">support@boomtownsnipes.com</a></p>
+        <p style="font-size: 1.5rem;">Contact: <a href="mailto:support@boomtownsnipes.com" style="color: white;">support@boomtownsnipes.com</a></p>
     </footer>
 
     <script>
@@ -1141,7 +1173,7 @@
         // Handle initial page load with hash - use DOMContentLoaded for faster initial load
         document.addEventListener('DOMContentLoaded', () => {
             const hash = window.location.hash.slice(1);
-            if (hash && ['press-kit', 'welcome', 'media', 'team', 'contact'].includes(hash)) {
+            if (hash && ['press-kit', 'welcome', 'media', 'contact'].includes(hash)) {
                 showPage(hash);
             } else {
                 showPage('press-kit');
@@ -1151,21 +1183,48 @@
         // Dynamic screenshot loading
         // Add or remove filenames from this array to update screenshots
         const screenshots = [
-            { file: 'rts.png', alt: 'Commander Mode View' },
-            { file: 'screenshot1.png', alt: 'Soldier Combat' },
-            { file: 'meadows.png', alt: 'Pine Valley Meadows' },
-            { file: 'snow.png', alt: 'Winter Battle' },
-            { file: 'tornado.png', alt: 'Tornado Event' }
+            { file: 'screenshot_0.png', alt: 'Commander Mode View' },
+            { file: 'screenshot_1.png', alt: 'Soldier Combat' },
+            { file: 'screenshot_2.png', alt: 'Pine Valley Meadows' },
+            { file: 'screenshot_3.png', alt: 'Winter Battle' },
+            { file: 'screenshot_4.png', alt: 'Tornado Event' },
+            { file: 'screenshot_5.png', alt: 'Night Battle' }
         ];
+
+        // Dynamic marketing images (logos and capsules) loading
+        const marketingImages = [
+            { file: 'logo_0.png', alt: 'Game Logo' },
+            { file: 'capsule_large.png', alt: 'Large Capsule' },
+            { file: 'capsule_medium.png', alt: 'Medium Capsule' },
+            { file: 'capsule_vertical.png', alt: 'Vertical Capsule' },
+            { file: 'text_one_line_shadow.png', alt: 'Text Logo One Line Shadow' },
+            // Add more marketing images as needed
+        ];
+
+        // Combine all images for lightbox functionality
+        let allImages = [];
 
         // Generate screenshot grid
         const screenshotsGrid = document.querySelector('.screenshots-grid');
         screenshots.forEach((screenshot, index) => {
+            allImages.push({ src: `screenshots/${screenshot.file}`, alt: screenshot.alt });
             const img = document.createElement('img');
             img.src = `screenshots/${screenshot.file}`;
             img.alt = screenshot.alt;
             img.onclick = () => openLightbox(index);
             screenshotsGrid.appendChild(img);
+        });
+
+        // Generate marketing images grid
+        const marketingImagesGrid = document.querySelector('.marketing-images-grid');
+        marketingImages.forEach((image, index) => {
+            const imgIndex = allImages.length;
+            allImages.push({ src: `marketing_images/${image.file}`, alt: image.alt });
+            const img = document.createElement('img');
+            img.src = `marketing_images/${image.file}`;
+            img.alt = image.alt;
+            img.onclick = () => openLightbox(imgIndex);
+            marketingImagesGrid.appendChild(img);
         });
 
         // Lightbox functionality
@@ -1175,8 +1234,8 @@
 
         function openLightbox(index) {
             currentImageIndex = index;
-            lightboxImg.src = `screenshots/${screenshots[index].file}`;
-            lightboxImg.alt = screenshots[index].alt;
+            lightboxImg.src = allImages[index].src;
+            lightboxImg.alt = allImages[index].alt;
             lightbox.classList.add('active');
             document.body.style.overflow = 'hidden'; // Prevent scrolling
         }
@@ -1191,13 +1250,13 @@
 
             // Loop around if at the beginning or end
             if (currentImageIndex < 0) {
-                currentImageIndex = screenshots.length - 1;
-            } else if (currentImageIndex >= screenshots.length) {
+                currentImageIndex = allImages.length - 1;
+            } else if (currentImageIndex >= allImages.length) {
                 currentImageIndex = 0;
             }
 
-            lightboxImg.src = `screenshots/${screenshots[currentImageIndex].file}`;
-            lightboxImg.alt = screenshots[currentImageIndex].alt;
+            lightboxImg.src = allImages[currentImageIndex].src;
+            lightboxImg.alt = allImages[currentImageIndex].alt;
         }
 
         // Close lightbox when clicking outside the image
@@ -1257,6 +1316,43 @@
                 // Generate and download the zip file
                 const content = await zip.generateAsync({ type: "blob" });
                 saveAs(content, "protect-pine-valley-screenshots.zip");
+
+                btn.textContent = originalText;
+                btn.style.pointerEvents = "auto";
+            } catch (error) {
+                console.error("Error creating zip:", error);
+                btn.textContent = "Error - Try Again";
+                btn.style.pointerEvents = "auto";
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                }, 2000);
+            }
+        }
+
+        // Download all marketing images (logos and capsules) as ZIP
+        async function downloadMarketingImagesZip(event) {
+            event.preventDefault();
+
+            const zip = new JSZip();
+            const folder = zip.folder("marketing_images");
+
+            // Show loading state
+            const btn = event.target;
+            const originalText = btn.textContent;
+            btn.textContent = "Creating ZIP...";
+            btn.style.pointerEvents = "none";
+
+            try {
+                // Fetch and add each marketing image to the zip
+                for (const image of marketingImages) {
+                    const response = await fetch(`marketing_images/${image.file}`);
+                    const blob = await response.blob();
+                    folder.file(image.file, blob);
+                }
+
+                // Generate and download the zip file
+                const content = await zip.generateAsync({ type: "blob" });
+                saveAs(content, "protect-pine-valley-marketing-images.zip");
 
                 btn.textContent = originalText;
                 btn.style.pointerEvents = "auto";
