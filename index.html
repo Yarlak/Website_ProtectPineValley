@@ -15,6 +15,10 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: "Neuton", serif;
             line-height: 1.6;
@@ -95,7 +99,7 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1560px;
             margin: 40px auto;
             padding: 0 20px;
         }
@@ -106,6 +110,44 @@
 
         .page-section.active {
             display: block;
+        }
+
+        .home-layout {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 40px;
+        }
+
+        .page-nav {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 8px;
+            border: 2px solid #4169e1;
+            position: sticky;
+            top: 80px;
+            height: fit-content;
+        }
+
+        .page-nav h3 {
+            color: #4169e1;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #4169e1;
+            padding-bottom: 10px;
+        }
+
+        .page-nav a {
+            display: block;
+            color: #4169e1;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 10px 0;
+            transition: color 0.3s;
+        }
+
+        .page-nav a:hover {
+            color: #6495ed;
         }
 
         .press-kit-layout {
@@ -287,6 +329,18 @@
             font-size: 1.2rem;
         }
 
+        .screenshots-grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+
+        .screenshots-grid img:hover {
+            transform: scale(1.05);
+        }
+
         .download-section {
             background: #f9f9f9;
             padding: 30px;
@@ -450,6 +504,24 @@
                 width: 90%;
             }
 
+            .home-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .page-nav {
+                position: static;
+            }
+
+            .page-nav h3 {
+                font-size: 1.2rem;
+            }
+
+            .page-nav a {
+                font-size: 1rem;
+                padding: 8px 0;
+            }
+
             nav ul {
                 padding: 10px 5px;
                 flex-wrap: nowrap;
@@ -557,11 +629,6 @@
                 gap: 20px;
             }
 
-            .screenshot-placeholder {
-                height: 200px;
-                font-size: 1rem;
-            }
-
             .download-section {
                 padding: 20px;
             }
@@ -627,7 +694,6 @@
         <ul>
             <li><a href="#home" class="nav-link active" data-page="home">Home</a></li>
             <li><a href="#about" class="nav-link" data-page="about">About</a></li>
-            <li><a href="#media" class="nav-link" data-page="media">Media</a></li>
             <li><a href="#team" class="nav-link" data-page="team">Team</a></li>
             <li><a href="#contact" class="nav-link" data-page="contact">Contact</a></li>
         </ul>
@@ -636,11 +702,22 @@
     <!-- HOME PAGE -->
     <div id="home-page" class="page-section active">
         <div class="container">
-            <div class="press-kit-layout">
-                <aside class="fact-sheet">
-                    <h2>Fact Sheet</h2>
+            <div class="home-layout">
+                <!-- Page Navigation Sidebar -->
+                <aside class="page-nav">
+                    <h3>Jump to</h3>
+                    <a href="#trailer">Trailer</a>
+                    <a href="#screenshots">Screenshots</a>
+                    <a href="#logos">Logos</a>
+                </aside>
 
-                    <h3>Developer</h3>
+                <!-- Main Content Area -->
+                <div>
+                    <div class="press-kit-layout">
+                        <aside class="fact-sheet">
+                            <h2>Fact Sheet</h2>
+
+                            <h3>Developer</h3>
                     <div class="fact-item">
                         <p>Based in Boston, MA</p>
                     </div>
@@ -715,7 +792,56 @@
                     </p>
                 </main>
             </div>
-        </div>
+
+            <!-- TRAILER SECTION -->
+            <section id="trailer">
+                <h2>Trailer & Gameplay Videos</h2>
+                <div class="video-section">
+                    <div class="video-embed">
+                        <iframe
+                            src="https://www.youtube.com/embed/tlJcCCJpBlI"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <p style="font-size: 1.2rem;">Official gameplay trailer showcasing Commander Mode and Soldier Mode</p>
+                </div>
+            </section>
+
+            <!-- SCREENSHOTS SECTION -->
+            <section id="screenshots">
+                <h2>Screenshots</h2>
+                <p style="font-size: 1.1rem; margin-bottom: 20px;">High-resolution screenshots from Protect Pine Valley</p>
+
+                <div class="screenshots-grid">
+                    <!-- Screenshots loaded dynamically via JavaScript -->
+                </div>
+
+                <div class="download-section">
+                    <h3>Download Press Kit</h3>
+                    <p style="margin-bottom: 20px;">Download high-resolution images, logos, and other press materials</p>
+                    <a href="#" class="download-btn">Download All Screenshots (ZIP)</a>
+                    <a href="#" class="download-btn">Download Logo Pack</a>
+                    <a href="#" class="download-btn">Download Press Kit (PDF)</a>
+                </div>
+            </section>
+
+            <!-- LOGOS SECTION -->
+            <section id="logos">
+                <h2>Game Logo</h2>
+                <p style="font-size: 1.1rem; margin-bottom: 20px;">Official logo for Protect Pine Valley - Available in multiple formats</p>
+
+                <div class="download-section">
+                    <p style="margin-bottom: 20px;"><strong>Available Formats:</strong> PNG (transparent), SVG, EPS</p>
+                    <a href="#" class="download-btn">Download Logo (Light)</a>
+                    <a href="#" class="download-btn">Download Logo (Dark)</a>
+                    <a href="#" class="download-btn">Download Logo (Full Color)</a>
+                </div>
+            </section>
+                </div> <!-- End main content area -->
+            </div> <!-- End home-layout -->
+        </div> <!-- End container -->
     </div>
 
     <!-- ABOUT PAGE -->
@@ -766,60 +892,6 @@
                 <p>
                     Built in Unity and developed by a passionate indie team in Boston, our goal is to create an experience that respects both strategic thinking and player skill, offering a game that's as rewarding to plan as it is to play.
                 </p>
-            </section>
-        </div>
-    </div>
-
-    <!-- MEDIA PAGE -->
-    <div id="media-page" class="page-section">
-        <div class="container">
-            <section>
-                <h2>Trailer & Gameplay Videos</h2>
-                <div class="video-section">
-                    <div class="video-embed">
-                        <iframe
-                            src="https://www.youtube.com/embed/tlJcCCJpBlI"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                    <p style="font-size: 1.2rem;">Official gameplay trailer showcasing Commander Mode and Soldier Mode</p>
-                </div>
-            </section>
-
-            <section>
-                <h2>Screenshots</h2>
-                <p style="font-size: 1.1rem; margin-bottom: 20px;">High-resolution screenshots from Protect Pine Valley</p>
-
-                <div class="screenshots-grid">
-                    <div class="screenshot-placeholder">Commander Mode View</div>
-                    <div class="screenshot-placeholder">Soldier Combat</div>
-                    <div class="screenshot-placeholder">Base Defense</div>
-                    <div class="screenshot-placeholder">Enemy Waves</div>
-                    <div class="screenshot-placeholder">Pine Valley Town</div>
-                    <div class="screenshot-placeholder">Strategic Planning</div>
-                </div>
-
-                <div class="download-section">
-                    <h3>Download Press Kit</h3>
-                    <p style="margin-bottom: 20px;">Download high-resolution images, logos, and other press materials</p>
-                    <a href="#" class="download-btn">Download All Screenshots (ZIP)</a>
-                    <a href="#" class="download-btn">Download Logo Pack</a>
-                    <a href="#" class="download-btn">Download Press Kit (PDF)</a>
-                </div>
-            </section>
-
-            <section>
-                <h2>Game Logo</h2>
-                <p style="font-size: 1.1rem; margin-bottom: 20px;">Official logo for Protect Pine Valley - Available in multiple formats</p>
-
-                <div class="download-section">
-                    <p style="margin-bottom: 20px;"><strong>Available Formats:</strong> PNG (transparent), SVG, EPS</p>
-                    <a href="#" class="download-btn">Download Logo (Light)</a>
-                    <a href="#" class="download-btn">Download Logo (Dark)</a>
-                    <a href="#" class="download-btn">Download Logo (Full Color)</a>
-                </div>
             </section>
         </div>
     </div>
@@ -961,6 +1033,38 @@
             } else {
                 showPage('home');
             }
+        });
+
+        // Dynamic screenshot loading
+        // Add or remove filenames from this array to update screenshots
+        const screenshots = [
+            { file: 'rts.png', alt: 'Commander Mode View' },
+            { file: 'screenshot1.png', alt: 'Soldier Combat' },
+            { file: 'meadows.png', alt: 'Pine Valley Meadows' },
+            { file: 'snow.png', alt: 'Winter Battle' },
+            { file: 'tornado.png', alt: 'Tornado Event' }
+        ];
+
+        // Generate screenshot grid
+        const screenshotsGrid = document.querySelector('.screenshots-grid');
+        screenshots.forEach(screenshot => {
+            const img = document.createElement('img');
+            img.src = `screenshots/${screenshot.file}`;
+            img.alt = screenshot.alt;
+            screenshotsGrid.appendChild(img);
+        });
+
+        // Handle section navigation within home page
+        document.querySelectorAll('.page-nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').slice(1); // Remove the #
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    const offsetTop = targetSection.getBoundingClientRect().top + window.pageYOffset - 50;
+                    window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+                }
+            });
         });
     </script>
 </body>
