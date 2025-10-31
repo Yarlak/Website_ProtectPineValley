@@ -199,14 +199,14 @@
         .fact-sheet h2 {
             color: #4169e1;
             font-size: 1.8rem;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             border-bottom: 3px solid #4169e1;
-            padding-bottom: 10px;
+            padding-bottom: 5px;
         }
 
         .fact-sheet h3 {
             color: #4169e1;
-            font-size: 1.44rem;
+            font-size: 1.656rem;
             margin-top: 17.5px;
             margin-bottom: 2px;
         }
@@ -225,7 +225,15 @@
 
         .fact-item p {
             margin: 0;
-            font-size: 1.2rem;
+            font-size: 1.38rem;
+        }
+
+        .fact-item p strong {
+            display: inline;
+            color: #333;
+            font-size: inherit;
+            text-transform: none;
+            margin-bottom: 0;
         }
 
         .platform-item {
@@ -247,7 +255,7 @@
         }
 
         .platform-item span {
-            font-size: 1.2rem;
+            font-size: 1.38rem;
             font-family: Arial, sans-serif;
             color: #D4AF37;
             font-weight: 600;
@@ -256,9 +264,9 @@
         .main-content h2 {
             color: #4169e1;
             font-size: 2.5rem;
-            margin-bottom: 30px;
+            margin-bottom: 15px;
             border-bottom: 3px solid #4169e1;
-            padding-bottom: 10px;
+            padding-bottom: 5px;
         }
 
         .video-embed {
@@ -273,9 +281,14 @@
         }
 
         .game-description {
-            font-size: 1.2rem;
-            line-height: 1.8;
+            font-size: 1.38rem;
+            line-height: 1.44;
             margin-bottom: 20px;
+        }
+
+        #features .game-description {
+            font-size: 1.5249rem;
+            margin-bottom: 5px;
         }
 
         .video-link {
@@ -515,13 +528,15 @@
             color: white;
             text-decoration: none;
             border-radius: 5px;
-            margin: 10px 10px 10px 0;
+            margin: 10px 5px 10px 0;
             font-weight: 600;
-            transition: background 0.3s;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
         }
 
         .download-btn:hover {
             background: #6495ed;
+            transform: scale(1.1);
         }
 
         .contact-box-container {
@@ -713,13 +728,13 @@
             }
 
             .fact-sheet h3 {
-                font-size: 1.32rem;
+                font-size: 1.524rem;
                 margin-top: 14px;
                 margin-bottom: 2px;
             }
 
             .fact-item p {
-                font-size: 1.1rem;
+                font-size: 1.27rem;
             }
 
             .platform-logo {
@@ -727,7 +742,7 @@
             }
 
             .platform-item span {
-                font-size: 1.1rem;
+                font-size: 1.27rem;
             }
 
             .main-content h2 {
@@ -739,7 +754,12 @@
             }
 
             .game-description {
-                font-size: 1rem;
+                font-size: 1.15rem;
+            }
+
+            #features .game-description {
+                font-size: 1.27075rem;
+                margin-bottom: 5px;
             }
 
             .video-link {
@@ -824,8 +844,8 @@
 
             .download-btn {
                 padding: 12px 20px;
-                font-size: 0.9rem;
-                margin: 10px 5px;
+                font-size: 1.3rem;
+                margin: 10px 2px;
             }
 
             .contact-box-container {
@@ -905,7 +925,7 @@
                         <aside class="fact-sheet">
                             <h2>Fact Sheet</h2>
 
-                            <h3>Developer</h3>
+                            <h3>Developer & Publisher</h3>
                     <div class="fact-item">
                         <p>BoomTown Snipes, LLC</p>
                     </div>
@@ -922,24 +942,16 @@
                         </a>
                     </div>
 
-                    <h3>Engine</h3>
-                    <div class="fact-item">
-                        <p>Unity</p>
-                    </div>
-
                     <h3>Genre</h3>
                     <div class="fact-item">
-                        <p>• Real-Time Strategy</p>
+                        <p>• Real-Time Tactics</p>
                         <p>• Action</p>
-                        <p>• Roguelike</p>
+                        <p>• Roguelite</p>
                     </div>
 
-                    <h3>Features</h3>
+                    <h3>Team</h3>
                     <div class="fact-item">
-                        <p>• Seamless mode switching</p>
-                        <p>• Strategic combat</p>
-                        <p>• Troop management</p>
-                        <p>• Intense action gameplay</p>
+                        <p><strong>Matt Russiello</strong> (Developer)</p>
                     </div>
                 </aside>
 
@@ -947,12 +959,12 @@
                     <div id="pitch">
                         <h2>Pitch</h2>
                         <p class="game-description">
-                            A unique blend of real-time strategy and third-person action gameplay that puts you in control of both the battlefield and individual soldiers.
+                            Command from above or fight on the front lines, leading the charge however you choose. Advance through large-scale battles, upgrade existing units or recruit new ones along the way. How you build your army depends on where you lead it - as different battlefields grant access to different units.
                         </p>
                     </div>
 
                     <div id="about-game">
-                        <h2>About the Game</h2>
+                        <h2>Description</h2>
 
                         <p class="game-description">
                         <strong>Protect Pine Valley</strong> is a strategy-action game where you defend the town of Pine Valley from enemy forces. The game allows you to switch between two gameplay modes.
@@ -969,6 +981,31 @@
                     <p class="game-description">
                         Lead Pine Valley through strategic planning and direct combat action.
                     </p>
+                    </div>
+
+                    <div id="short-descriptions">
+                        <h2>Short Descriptions</h2>
+                        <p class="game-description">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </p>
+                        <p class="game-description">
+                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </div>
+
+                    <div id="features">
+                        <h2>Features</h2>
+                        <p class="game-description">• Large scale battles</p>
+                        <p class="game-description">• Different environments</p>
+                        <p class="game-description">• Various weather conditions</p>
+                        <p class="game-description">• Troop Upgrades</p>
+                    </div>
+
+                    <div id="history">
+                        <h2>History</h2>
+                        <p class="game-description">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        </p>
                     </div>
                 </main>
             </div>
