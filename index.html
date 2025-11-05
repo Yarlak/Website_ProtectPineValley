@@ -279,13 +279,20 @@
         }
 
         .video-embed {
+            position: relative;
             width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
             margin: 30px 0;
+            height: 0;
+            overflow: hidden;
         }
 
         .video-embed iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 450px;
+            height: 100%;
             border-radius: 8px;
         }
 
@@ -436,7 +443,55 @@
             font-size: 1.2rem;
         }
 
-        .screenshots-grid img, .logos-grid img {
+        .screenshot-item {
+            position: relative;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .screenshot-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            display: block;
+        }
+
+        .screenshot-item:hover {
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+
+        .screenshot-download-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(65, 105, 225, 0.9);
+            border: none;
+            border-radius: 5px;
+            padding: 0;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+        }
+
+        .screenshot-download-btn img {
+            width: 40px;
+            height: 40px;
+            display: block;
+        }
+
+        .screenshot-download-btn:hover {
+            background: rgba(100, 149, 237, 1);
+            transform: scale(1.1);
+        }
+
+        .logos-grid img {
             width: 100%;
             height: auto;
             border-radius: 8px;
@@ -444,7 +499,7 @@
             transition: transform 0.3s;
         }
 
-        .screenshots-grid img:hover, .logos-grid img:hover {
+        .logos-grid img:hover {
             transform: scale(1.05);
             cursor: pointer;
         }
@@ -465,19 +520,6 @@
 
         .lightbox.active {
             display: flex;
-        }
-
-        .lightbox-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90%;
-        }
-
-        .lightbox-content img {
-            max-width: 100%;
-            max-height: 90vh;
-            object-fit: contain;
-            border-radius: 8px;
         }
 
         .lightbox-arrow {
@@ -507,18 +549,62 @@
             right: 20px;
         }
 
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
         .lightbox-close {
             position: absolute;
             top: 20px;
-            right: 30px;
+            right: 60px;
             color: white;
-            font-size: 3rem;
+            font-size: 5.25rem;
             cursor: pointer;
             user-select: none;
         }
 
         .lightbox-close:hover {
             opacity: 0.7;
+        }
+
+        .lightbox-download-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(65, 105, 225, 0.9);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 15px;
+            font-weight: 600;
+            font-size: 1.375rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            z-index: 10;
+        }
+
+        .lightbox-download-btn img {
+            width: 36px;
+            height: 36px;
+            display: block;
+        }
+
+        .lightbox-download-btn:hover {
+            background: rgba(100, 149, 237, 1);
+            transform: scale(1.05);
         }
 
         .download-section {
@@ -768,9 +854,6 @@
                 font-size: 1.8rem;
             }
 
-            .video-embed iframe {
-                height: 200px;
-            }
 
             .game-description {
                 font-size: 1.15rem;
@@ -853,6 +936,17 @@
                 gap: 20px;
             }
 
+            .screenshot-download-btn {
+                width: 35px;
+                height: 35px;
+                padding: 0;
+            }
+
+            .screenshot-download-btn img {
+                width: 35px;
+                height: 35px;
+            }
+
             .download-section {
                 padding: 20px;
             }
@@ -900,6 +994,25 @@
 
             .info-section p {
                 font-size: 1rem;
+            }
+
+            .lightbox-download-btn {
+                top: 10px;
+                right: 10px;
+                padding: 6px 12px;
+                font-size: 1.2375rem;
+                gap: 10px;
+            }
+
+            .lightbox-download-btn img {
+                width: 30px;
+                height: 30px;
+            }
+
+            .lightbox-close {
+                top: 15px;
+                right: 50px;
+                font-size: 4.375rem;
             }
         }
     </style>
@@ -1040,11 +1153,14 @@
                 <div class="video-section">
                     <div class="video-embed">
                         <iframe
-                            src="https://www.youtube.com/embed/tlJcCCJpBlI"
+                            src="https://player.vimeo.com/video/1133944640?badge=0&autopause=0&player_id=0&app_id=58479"
                             frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
                             allowfullscreen>
                         </iframe>
+                    </div>
+                    <div class="download-section">
+                        <a href="https://vimeo.com/1133944640" class="download-btn" target="_blank">Download Trailer</a>
                     </div>
                 </div>
             </section>
@@ -1106,6 +1222,10 @@
         <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
         <button class="lightbox-arrow prev" onclick="changeImage(-1)">&#10094;</button>
         <div class="lightbox-content">
+            <button class="lightbox-download-btn" id="lightbox-download-btn" onclick="downloadCurrentImage()">
+                <img src="download_symbol.png" alt="Download">
+                <span>Download</span>
+            </button>
             <img id="lightbox-img" src="" alt="">
         </div>
         <button class="lightbox-arrow next" onclick="changeImage(1)">&#10095;</button>
@@ -1188,7 +1308,8 @@
             { file: 'screenshot_2.png', alt: 'Pine Valley Meadows' },
             { file: 'screenshot_3.png', alt: 'Winter Battle' },
             { file: 'screenshot_4.png', alt: 'Tornado Event' },
-            { file: 'screenshot_5.png', alt: 'Night Battle' }
+            { file: 'screenshot_5.png', alt: 'Night Battle' },
+            { file: 'screenshot_6.png', alt: 'Battle Scene' }
         ];
 
         // Dynamic marketing images (logos and capsules) loading
@@ -1197,6 +1318,7 @@
             { file: 'capsule_large.png', alt: 'Large Capsule' },
             { file: 'capsule_medium.png', alt: 'Medium Capsule' },
             { file: 'capsule_vertical.png', alt: 'Vertical Capsule' },
+            { file: 'capsule_2.png', alt: 'Capsule Image' },
             { file: 'text_one_line_shadow.png', alt: 'Text Logo One Line Shadow' },
             // Add more marketing images as needed
         ];
@@ -1208,11 +1330,32 @@
         const screenshotsGrid = document.querySelector('.screenshots-grid');
         screenshots.forEach((screenshot, index) => {
             allImages.push({ src: `screenshots/${screenshot.file}`, alt: screenshot.alt });
+
+            // Create container div
+            const container = document.createElement('div');
+            container.className = 'screenshot-item';
+
+            // Create image
             const img = document.createElement('img');
             img.src = `screenshots/${screenshot.file}`;
             img.alt = screenshot.alt;
             img.onclick = () => openLightbox(index);
-            screenshotsGrid.appendChild(img);
+
+            // Create download button
+            const downloadBtn = document.createElement('button');
+            downloadBtn.className = 'screenshot-download-btn';
+            const downloadIcon = document.createElement('img');
+            downloadIcon.src = 'download_symbol.png';
+            downloadIcon.alt = 'Download';
+            downloadBtn.appendChild(downloadIcon);
+            downloadBtn.onclick = (e) => {
+                e.stopPropagation(); // Prevent opening lightbox when clicking download
+                downloadImage(`screenshots/${screenshot.file}`, screenshot.file);
+            };
+
+            container.appendChild(img);
+            container.appendChild(downloadBtn);
+            screenshotsGrid.appendChild(container);
         });
 
         // Generate marketing images grid
@@ -1291,6 +1434,25 @@
                 }
             });
         });
+
+        // Download individual image
+        async function downloadImage(imagePath, filename) {
+            try {
+                const response = await fetch(imagePath);
+                const blob = await response.blob();
+                saveAs(blob, filename);
+            } catch (error) {
+                console.error("Error downloading image:", error);
+                alert("Failed to download image. Please try again.");
+            }
+        }
+
+        // Download current lightbox image
+        function downloadCurrentImage() {
+            const currentImage = allImages[currentImageIndex];
+            const filename = currentImage.src.split('/').pop();
+            downloadImage(currentImage.src, filename);
+        }
 
         // Download all screenshots as ZIP
         async function downloadScreenshotsZip(event) {
