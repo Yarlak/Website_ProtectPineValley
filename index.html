@@ -279,13 +279,20 @@
         }
 
         .video-embed {
+            position: relative;
             width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
             margin: 30px 0;
+            height: 0;
+            overflow: hidden;
         }
 
         .video-embed iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 450px;
+            height: 100%;
             border-radius: 8px;
         }
 
@@ -420,6 +427,15 @@
             margin-top: 30px;
         }
 
+        .gifs-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .gifs-grid .screenshot-item {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
         .logos-grid {
             margin-bottom: 40px;
         }
@@ -436,15 +452,69 @@
             font-size: 1.2rem;
         }
 
-        .screenshots-grid img, .logos-grid img {
+        .screenshot-item {
+            position: relative;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .screenshot-item img {
             width: 100%;
             height: auto;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            display: block;
+        }
+
+        .screenshot-item:hover {
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+
+        .screenshot-download-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(65, 105, 225, 0.9);
+            border: none;
+            border-radius: 5px;
+            padding: 0;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+        }
+
+        .screenshot-download-btn img {
+            width: 40px;
+            height: 40px;
+            display: block;
+        }
+
+        .screenshot-download-btn:hover {
+            background: rgba(100, 149, 237, 1);
+            transform: scale(1.1);
+        }
+
+        .logo-item {
+            position: relative;
+            border-radius: 8px;
             transition: transform 0.3s;
         }
 
-        .screenshots-grid img:hover, .logos-grid img:hover {
+        .logo-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            display: block;
+        }
+
+        .logo-item:hover {
             transform: scale(1.05);
             cursor: pointer;
         }
@@ -465,19 +535,6 @@
 
         .lightbox.active {
             display: flex;
-        }
-
-        .lightbox-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90%;
-        }
-
-        .lightbox-content img {
-            max-width: 100%;
-            max-height: 90vh;
-            object-fit: contain;
-            border-radius: 8px;
         }
 
         .lightbox-arrow {
@@ -507,18 +564,62 @@
             right: 20px;
         }
 
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
         .lightbox-close {
             position: absolute;
             top: 20px;
-            right: 30px;
+            right: 60px;
             color: white;
-            font-size: 3rem;
+            font-size: 5.25rem;
             cursor: pointer;
             user-select: none;
         }
 
         .lightbox-close:hover {
             opacity: 0.7;
+        }
+
+        .lightbox-download-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(65, 105, 225, 0.9);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 15px;
+            font-weight: 600;
+            font-size: 1.375rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            z-index: 10;
+        }
+
+        .lightbox-download-btn img {
+            width: 36px;
+            height: 36px;
+            display: block;
+        }
+
+        .lightbox-download-btn:hover {
+            background: rgba(100, 149, 237, 1);
+            transform: scale(1.05);
         }
 
         .download-section {
@@ -545,6 +646,12 @@
             font-weight: 600;
             font-size: 1.5rem;
             transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-family: "Neuton", serif;
+            box-sizing: border-box;
+            line-height: 1.6;
+            vertical-align: middle;
         }
 
         .download-btn:hover {
@@ -768,9 +875,6 @@
                 font-size: 1.8rem;
             }
 
-            .video-embed iframe {
-                height: 200px;
-            }
 
             .game-description {
                 font-size: 1.15rem;
@@ -853,6 +957,21 @@
                 gap: 20px;
             }
 
+            .gifs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .screenshot-download-btn {
+                width: 35px;
+                height: 35px;
+                padding: 0;
+            }
+
+            .screenshot-download-btn img {
+                width: 35px;
+                height: 35px;
+            }
+
             .download-section {
                 padding: 20px;
             }
@@ -901,15 +1020,34 @@
             .info-section p {
                 font-size: 1rem;
             }
+
+            .lightbox-download-btn {
+                top: 10px;
+                right: 10px;
+                padding: 6px 12px;
+                font-size: 1.2375rem;
+                gap: 10px;
+            }
+
+            .lightbox-download-btn img {
+                width: 30px;
+                height: 30px;
+            }
+
+            .lightbox-close {
+                top: 15px;
+                right: 50px;
+                font-size: 4.375rem;
+            }
         }
     </style>
 </head>
 <body>
     <div class="video-banner">
         <iframe
-            src="https://www.youtube.com/embed/RcE1ArX_6H8?autoplay=1&mute=1&loop=1&playlist=RcE1ArX_6H8&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&vq=hd1080"
+            src="https://player.vimeo.com/video/1133962466?h=6c240b639f&autoplay=1&muted=1&loop=1&background=1&autopause=0&controls=0&title=0&byline=0&portrait=0"
             frameborder="0"
-            allow="autoplay; encrypted-media"
+            allow="autoplay; fullscreen; picture-in-picture"
             allowfullscreen>
         </iframe>
         <a href="https://store.steampowered.com/app/3189670/Protect_Pine_Valley/" target="_blank">
@@ -933,6 +1071,7 @@
                     <h3>Jump To</h3>
                     <a href="#pitch">Fact Sheet</a>
                     <a href="#trailer">Videos</a>
+                    <a href="#gifs">GIFs</a>
                     <a href="#screenshots">Screenshots</a>
                     <a href="#logos">Logos</a>
                 </aside>
@@ -992,13 +1131,13 @@
                     <div id="short-descriptions">
                         <h2>Short Descriptions</h2>
                         <p class="game-description">
-                            Experience the chaos of battle through different perspectives - from the vulnerability of a foot soldier to the overwhelming strength of a rock golem. Each unit can affect the battle in their own way, whether it be holding the line or breaking through it.
+                            Experience the chaos of battle through different perspectives - from the vulnerability of a foot soldier to the overwhelming strength of a rock golem. Each unit has its own mass and strength, allowing them to push or be pushed by others, causing the front lines to shift dynamically.
                         </p>
                         <p class="game-description">
                             Stay above the fray and let your soldiers do the work. Use commander abilities to influence the battle - spread out a crowd with a tornado or delete some enemies with a meteor shower.
                         </p>
                         <p class="game-description">
-                            Each round, choose your next battlefield carefully. Rewards after each victory are influenced by the environment of each battle.
+                            Each battlefield environment offers different rewards. Plan your route carefully - the terrain you fight on determines the units and abilities you'll unlock.
                         </p>
                     </div>
 
@@ -1040,12 +1179,29 @@
                 <div class="video-section">
                     <div class="video-embed">
                         <iframe
-                            src="https://www.youtube.com/embed/tlJcCCJpBlI"
+                            src="https://player.vimeo.com/video/1133944640?badge=0&autopause=0&player_id=0&app_id=58479"
                             frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
                             allowfullscreen>
                         </iframe>
                     </div>
+                    <div class="download-section">
+                        <a href="https://vimeo.com/1133944640" class="download-btn" target="_blank">Download on Vimeo</a>
+                        <button class="download-btn" onclick="copyEmbedCode()">&lt;Copy Embed Code&gt;</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GIFS SECTION -->
+            <section id="gifs">
+                <h2>GIFs</h2>
+
+                <div class="screenshots-grid gifs-grid">
+                    <!-- GIFs loaded dynamically via JavaScript -->
+                </div>
+
+                <div class="download-section">
+                    <a href="#" class="download-btn" onclick="downloadGifsZip(event)">Download All GIFs (ZIP)</a>
                 </div>
             </section>
 
@@ -1073,6 +1229,14 @@
                 <div class="download-section">
                     <a href="#" class="download-btn" onclick="downloadMarketingImagesZip(event)">Download All Logos and Capsules (ZIP)</a>
                 </div>
+            </section>
+
+            <!-- PERMISSIONS SECTION -->
+            <section>
+                <h2 style="text-align: center;">Permissions</h2>
+                <p style="font-size: 1.8rem; line-height: 1.8; text-align: center;">
+                    All the images, videos, and texts on this page are licensed under <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" style="color: #4169e1; text-decoration: underline;">CC BY 4.0</a>.
+                </p>
             </section>
                 </div> <!-- End main content area -->
             </div> <!-- End home-layout -->
@@ -1106,6 +1270,10 @@
         <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
         <button class="lightbox-arrow prev" onclick="changeImage(-1)">&#10094;</button>
         <div class="lightbox-content">
+            <button class="lightbox-download-btn" id="lightbox-download-btn" onclick="downloadCurrentImage()">
+                <img src="download_symbol.png" alt="Download">
+                <span>Download</span>
+            </button>
             <img id="lightbox-img" src="" alt="">
         </div>
         <button class="lightbox-arrow next" onclick="changeImage(1)">&#10095;</button>
@@ -1188,7 +1356,16 @@
             { file: 'screenshot_2.png', alt: 'Pine Valley Meadows' },
             { file: 'screenshot_3.png', alt: 'Winter Battle' },
             { file: 'screenshot_4.png', alt: 'Tornado Event' },
-            { file: 'screenshot_5.png', alt: 'Night Battle' }
+            { file: 'screenshot_5.png', alt: 'Night Battle' },
+            { file: 'screenshot_6.png', alt: 'Battle Scene' }
+        ];
+
+        // Dynamic gifs loading
+        const gifs = [
+            { file: 'jump.gif', alt: 'Jump Animation' },
+            { file: 'commander_to_soldier.gif', alt: 'Commander to Soldier Mode' },
+            { file: 'soldier_to_commander.gif', alt: 'Soldier to Commander Mode' },
+            { file: 'meadow_pan.gif', alt: 'Meadow Pan' }
         ];
 
         // Dynamic marketing images (logos and capsules) loading
@@ -1197,22 +1374,78 @@
             { file: 'capsule_large.png', alt: 'Large Capsule' },
             { file: 'capsule_medium.png', alt: 'Medium Capsule' },
             { file: 'capsule_vertical.png', alt: 'Vertical Capsule' },
+            { file: 'capsule_2.png', alt: 'Capsule Image' },
             { file: 'text_one_line_shadow.png', alt: 'Text Logo One Line Shadow' },
+            { file: 'boomtownsnipes_logo.png', alt: 'BoomTown Snipes Logo' },
             // Add more marketing images as needed
         ];
 
         // Combine all images for lightbox functionality
         let allImages = [];
 
-        // Generate screenshot grid
-        const screenshotsGrid = document.querySelector('.screenshots-grid');
+        // Generate gifs grid FIRST (to match page order in lightbox)
+        const gifsGrid = document.querySelector('.gifs-grid');
+        gifs.forEach((gif, index) => {
+            allImages.push({ src: `gifs/${gif.file}`, alt: gif.alt });
+
+            // Create container div
+            const container = document.createElement('div');
+            container.className = 'screenshot-item';
+
+            // Create image
+            const img = document.createElement('img');
+            img.src = `gifs/${gif.file}`;
+            img.alt = gif.alt;
+            img.onclick = () => openLightbox(index);
+
+            // Create download button
+            const downloadBtn = document.createElement('button');
+            downloadBtn.className = 'screenshot-download-btn';
+            const downloadIcon = document.createElement('img');
+            downloadIcon.src = 'download_symbol.png';
+            downloadIcon.alt = 'Download';
+            downloadBtn.appendChild(downloadIcon);
+            downloadBtn.onclick = (e) => {
+                e.stopPropagation(); // Prevent opening lightbox when clicking download
+                downloadImage(`gifs/${gif.file}`, gif.file);
+            };
+
+            container.appendChild(img);
+            container.appendChild(downloadBtn);
+            gifsGrid.appendChild(container);
+        });
+
+        // Generate screenshot grid SECOND
+        const screenshotsGrid = document.querySelector('.screenshots-grid:not(.gifs-grid)');
         screenshots.forEach((screenshot, index) => {
+            const screenshotIndex = allImages.length;
             allImages.push({ src: `screenshots/${screenshot.file}`, alt: screenshot.alt });
+
+            // Create container div
+            const container = document.createElement('div');
+            container.className = 'screenshot-item';
+
+            // Create image
             const img = document.createElement('img');
             img.src = `screenshots/${screenshot.file}`;
             img.alt = screenshot.alt;
-            img.onclick = () => openLightbox(index);
-            screenshotsGrid.appendChild(img);
+            img.onclick = () => openLightbox(screenshotIndex);
+
+            // Create download button
+            const downloadBtn = document.createElement('button');
+            downloadBtn.className = 'screenshot-download-btn';
+            const downloadIcon = document.createElement('img');
+            downloadIcon.src = 'download_symbol.png';
+            downloadIcon.alt = 'Download';
+            downloadBtn.appendChild(downloadIcon);
+            downloadBtn.onclick = (e) => {
+                e.stopPropagation(); // Prevent opening lightbox when clicking download
+                downloadImage(`screenshots/${screenshot.file}`, screenshot.file);
+            };
+
+            container.appendChild(img);
+            container.appendChild(downloadBtn);
+            screenshotsGrid.appendChild(container);
         });
 
         // Generate marketing images grid
@@ -1220,11 +1453,32 @@
         marketingImages.forEach((image, index) => {
             const imgIndex = allImages.length;
             allImages.push({ src: `marketing_images/${image.file}`, alt: image.alt });
+
+            // Create container div
+            const container = document.createElement('div');
+            container.className = 'logo-item';
+
+            // Create image
             const img = document.createElement('img');
             img.src = `marketing_images/${image.file}`;
             img.alt = image.alt;
             img.onclick = () => openLightbox(imgIndex);
-            marketingImagesGrid.appendChild(img);
+
+            // Create download button
+            const downloadBtn = document.createElement('button');
+            downloadBtn.className = 'screenshot-download-btn';
+            const downloadIcon = document.createElement('img');
+            downloadIcon.src = 'download_symbol.png';
+            downloadIcon.alt = 'Download';
+            downloadBtn.appendChild(downloadIcon);
+            downloadBtn.onclick = (e) => {
+                e.stopPropagation(); // Prevent opening lightbox when clicking download
+                downloadImage(`marketing_images/${image.file}`, image.file);
+            };
+
+            container.appendChild(img);
+            container.appendChild(downloadBtn);
+            marketingImagesGrid.appendChild(container);
         });
 
         // Lightbox functionality
@@ -1292,6 +1546,37 @@
             });
         });
 
+        // Download individual image
+        async function downloadImage(imagePath, filename) {
+            try {
+                const response = await fetch(imagePath);
+                const blob = await response.blob();
+                saveAs(blob, filename);
+            } catch (error) {
+                console.error("Error downloading image:", error);
+                alert("Failed to download image. Please try again.");
+            }
+        }
+
+        // Download current lightbox image
+        function downloadCurrentImage() {
+            const currentImage = allImages[currentImageIndex];
+            const filename = currentImage.src.split('/').pop();
+            downloadImage(currentImage.src, filename);
+        }
+
+        // Copy embed code to clipboard
+        function copyEmbedCode() {
+            const embedCode = '<iframe src="https://player.vimeo.com/video/1133944640?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="1920" height="1080" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="ProtectPineValley_Trailer"></iframe>';
+
+            navigator.clipboard.writeText(embedCode).then(() => {
+                alert('Embed code copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy embed code:', err);
+                alert('Failed to copy embed code. Please try again.');
+            });
+        }
+
         // Download all screenshots as ZIP
         async function downloadScreenshotsZip(event) {
             event.preventDefault();
@@ -1353,6 +1638,43 @@
                 // Generate and download the zip file
                 const content = await zip.generateAsync({ type: "blob" });
                 saveAs(content, "protect-pine-valley-marketing-images.zip");
+
+                btn.textContent = originalText;
+                btn.style.pointerEvents = "auto";
+            } catch (error) {
+                console.error("Error creating zip:", error);
+                btn.textContent = "Error - Try Again";
+                btn.style.pointerEvents = "auto";
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                }, 2000);
+            }
+        }
+
+        // Download all gifs as ZIP
+        async function downloadGifsZip(event) {
+            event.preventDefault();
+
+            const zip = new JSZip();
+            const folder = zip.folder("gifs");
+
+            // Show loading state
+            const btn = event.target;
+            const originalText = btn.textContent;
+            btn.textContent = "Creating ZIP...";
+            btn.style.pointerEvents = "none";
+
+            try {
+                // Fetch and add each gif to the zip
+                for (const gif of gifs) {
+                    const response = await fetch(`gifs/${gif.file}`);
+                    const blob = await response.blob();
+                    folder.file(gif.file, blob);
+                }
+
+                // Generate and download the zip file
+                const content = await zip.generateAsync({ type: "blob" });
+                saveAs(content, "protect-pine-valley-gifs.zip");
 
                 btn.textContent = originalText;
                 btn.style.pointerEvents = "auto";
