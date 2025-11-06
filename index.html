@@ -793,13 +793,7 @@
             font-style: italic;
         }
 
-        @media (max-width: 768px) {
-            .video-banner {
-                height: 35vh;
-                min-height: 200px;
-                max-height: 350px;
-            }
-
+        @media (max-width: 1024px) {
             .home-layout {
                 grid-template-columns: 1fr;
                 gap: 20px;
@@ -807,6 +801,19 @@
 
             .page-nav {
                 position: static;
+            }
+
+            /* Make the sticky container also non-sticky on smaller screens */
+            .home-layout > div[style*="position: sticky"] {
+                position: static !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .video-banner {
+                height: 35vh;
+                min-height: 200px;
+                max-height: 350px;
             }
 
             .page-nav h3 {
