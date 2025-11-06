@@ -179,6 +179,10 @@
             color: #6495ed;
         }
 
+        .download-all-images-btn:hover {
+            background: #6495ed !important;
+        }
+
         .press-kit-layout {
             background: white;
             padding: 40px;
@@ -1067,17 +1071,42 @@
         <div class="container">
             <div class="home-layout">
                 <!-- Page Navigation Sidebar -->
-                <aside class="page-nav">
-                    <h3>Jump To</h3>
-                    <a href="#pitch">Fact Sheet</a>
-                    <a href="#trailer">Videos</a>
-                    <a href="#gifs">GIFs</a>
-                    <a href="#screenshots">Screenshots</a>
-                    <a href="#logos">Logos</a>
-                </aside>
+                <div style="position: sticky; top: 80px; height: fit-content;">
+                    <aside class="page-nav" style="position: static; margin-bottom: 20px;">
+                        <h3>Jump To</h3>
+                        <a href="#trailer">Videos</a>
+                        <a href="#pitch">Fact Sheet</a>
+                        <a href="#gifs">GIFs</a>
+                        <a href="#screenshots">Screenshots</a>
+                        <a href="#logos">Logos</a>
+                    </aside>
+                    <button class="download-all-images-btn" onclick="downloadAllImagesZip(event)" style="width: 200px; padding: 8.4px 12px; background: #4169e1; color: white; border: none; border-radius: 5px; font-weight: 600; font-size: 1.485rem; cursor: pointer; font-family: 'Neuton', serif; transition: background 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                        <img src="download_symbol.png" alt="Download" style="width: 38.64px; height: 38.64px; flex-shrink: 0;">
+                        <span style="line-height: 1;">All Images</span>
+                    </button>
+                </div>
 
                 <!-- Main Content Area -->
                 <div>
+                    <!-- VIDEOS SECTION -->
+                    <section id="trailer" style="margin-top: 0;">
+                        <h2>Videos</h2>
+                        <div class="video-section">
+                            <div class="video-embed">
+                                <iframe
+                                    src="https://player.vimeo.com/video/1133944640?badge=0&autopause=0&player_id=0&app_id=58479"
+                                    frameborder="0"
+                                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <div class="download-section">
+                                <a href="https://vimeo.com/1133944640" class="download-btn" target="_blank">Download on Vimeo</a>
+                                <button class="download-btn" onclick="copyEmbedCode()">&lt;Copy Embed Code&gt;</button>
+                            </div>
+                        </div>
+                    </section>
+
                     <div class="press-kit-layout">
                         <aside class="fact-sheet">
                             <h2>Fact Sheet</h2>
@@ -1121,15 +1150,12 @@
                     <div id="pitch">
                         <h2>Pitch</h2>
                         <p class="game-description">
-                            The ancient protective magic has faded away and for the first time in centuries, the residents of Pine Valley will need to defend themselves. Raise an army to fight back the invaders before it's too late.
-                        </p>
-                        <p class="game-description">
                             Seamlessly switch between commanding your troops from above or fighting alongside them on the front lines. Advance through large-scale battles, upgrade existing units or recruit new ones along the way. How you build your army depends on where you lead it - as different battlefields grant access to different units and rewards.
                         </p>
                     </div>
 
                     <div id="short-descriptions">
-                        <h2>Short Descriptions</h2>
+                        <h2>Blurbs</h2>
                         <p class="game-description">
                             Experience the chaos of battle through different perspectives - from the vulnerability of a foot soldier to the overwhelming strength of a rock golem. Each unit has its own mass and strength, allowing them to push or be pushed by others, causing the front lines to shift dynamically.
                         </p>
@@ -1139,6 +1165,13 @@
                         <p class="game-description">
                             Each battlefield environment offers different rewards. Plan your route carefully - the terrain you fight on determines the units and abilities you'll unlock.
                         </p>
+                    </div>
+
+                    <div id="features">
+                        <h2>Features</h2>
+                        <p class="game-description">• Custom Battle Mode</p>
+                        <p class="game-description">• Roguelite Campaign with persistent upgrades across runs</p>
+                        <p class="game-description">• Large-scale battles with thousands of units</p>
                     </div>
 
                     <div id="about-game">
@@ -1157,13 +1190,6 @@
                         </p>
                     </div>
 
-                    <div id="features">
-                        <h2>Features</h2>
-                        <p class="game-description">• Epic battles capable of featuring thousands of units</p>
-                        <p class="game-description">• Various environments and weather conditions</p>
-                        <p class="game-description">• Upgrades for different playstyles - whether you favor commanding your forces or fighting with them on the battlefield</p>
-                    </div>
-
                     <div id="history">
                         <h2>History</h2>
                         <p class="game-description">
@@ -1172,25 +1198,6 @@
                     </div>
                 </main>
             </div>
-
-            <!-- TRAILER SECTION -->
-            <section id="trailer">
-                <h2>Videos</h2>
-                <div class="video-section">
-                    <div class="video-embed">
-                        <iframe
-                            src="https://player.vimeo.com/video/1133944640?badge=0&autopause=0&player_id=0&app_id=58479"
-                            frameborder="0"
-                            allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                    <div class="download-section">
-                        <a href="https://vimeo.com/1133944640" class="download-btn" target="_blank">Download on Vimeo</a>
-                        <button class="download-btn" onclick="copyEmbedCode()">&lt;Copy Embed Code&gt;</button>
-                    </div>
-                </div>
-            </section>
 
             <!-- GIFS SECTION -->
             <section id="gifs">
@@ -1684,6 +1691,61 @@
                 btn.style.pointerEvents = "auto";
                 setTimeout(() => {
                     btn.textContent = originalText;
+                }, 2000);
+            }
+        }
+
+        // Download all images (screenshots, gifs, and logos) as ZIP
+        async function downloadAllImagesZip(event) {
+            event.preventDefault();
+
+            const zip = new JSZip();
+
+            // Create folders for each category
+            const screenshotsFolder = zip.folder("screenshots");
+            const gifsFolder = zip.folder("gifs");
+            const logosFolder = zip.folder("logos");
+
+            // Show loading state
+            const btn = event.target;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span style="line-height: 1;">Creating ZIP...</span>';
+            btn.style.pointerEvents = "none";
+
+            try {
+                // Fetch and add each screenshot to the zip
+                for (const screenshot of screenshots) {
+                    const response = await fetch(`screenshots/${screenshot.file}`);
+                    const blob = await response.blob();
+                    screenshotsFolder.file(screenshot.file, blob);
+                }
+
+                // Fetch and add each gif to the zip
+                for (const gif of gifs) {
+                    const response = await fetch(`gifs/${gif.file}`);
+                    const blob = await response.blob();
+                    gifsFolder.file(gif.file, blob);
+                }
+
+                // Fetch and add each logo/marketing image to the zip
+                for (const image of marketingImages) {
+                    const response = await fetch(`marketing_images/${image.file}`);
+                    const blob = await response.blob();
+                    logosFolder.file(image.file, blob);
+                }
+
+                // Generate and download the zip file
+                const content = await zip.generateAsync({ type: "blob" });
+                saveAs(content, "protect-pine-valley-all-images.zip");
+
+                btn.innerHTML = originalText;
+                btn.style.pointerEvents = "auto";
+            } catch (error) {
+                console.error("Error creating zip:", error);
+                btn.innerHTML = '<span style="line-height: 1;">Error - Try Again</span>';
+                btn.style.pointerEvents = "auto";
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
                 }, 2000);
             }
         }
