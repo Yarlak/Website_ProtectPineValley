@@ -1069,8 +1069,8 @@
                 <!-- Page Navigation Sidebar -->
                 <aside class="page-nav">
                     <h3>Jump To</h3>
-                    <a href="#pitch">Fact Sheet</a>
                     <a href="#trailer">Videos</a>
+                    <a href="#pitch">Fact Sheet</a>
                     <a href="#gifs">GIFs</a>
                     <a href="#screenshots">Screenshots</a>
                     <a href="#logos">Logos</a>
@@ -1078,6 +1078,25 @@
 
                 <!-- Main Content Area -->
                 <div>
+                    <!-- VIDEOS SECTION -->
+                    <section id="trailer" style="margin-top: 0;">
+                        <h2>Videos</h2>
+                        <div class="video-section">
+                            <div class="video-embed">
+                                <iframe
+                                    src="https://player.vimeo.com/video/1133944640?badge=0&autopause=0&player_id=0&app_id=58479"
+                                    frameborder="0"
+                                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <div class="download-section">
+                                <a href="https://vimeo.com/1133944640" class="download-btn" target="_blank">Download on Vimeo</a>
+                                <button class="download-btn" onclick="copyEmbedCode()">&lt;Copy Embed Code&gt;</button>
+                            </div>
+                        </div>
+                    </section>
+
                     <div class="press-kit-layout">
                         <aside class="fact-sheet">
                             <h2>Fact Sheet</h2>
@@ -1172,25 +1191,6 @@
                     </div>
                 </main>
             </div>
-
-            <!-- TRAILER SECTION -->
-            <section id="trailer">
-                <h2>Videos</h2>
-                <div class="video-section">
-                    <div class="video-embed">
-                        <iframe
-                            src="https://player.vimeo.com/video/1133944640?badge=0&autopause=0&player_id=0&app_id=58479"
-                            frameborder="0"
-                            allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                    <div class="download-section">
-                        <a href="https://vimeo.com/1133944640" class="download-btn" target="_blank">Download on Vimeo</a>
-                        <button class="download-btn" onclick="copyEmbedCode()">&lt;Copy Embed Code&gt;</button>
-                    </div>
-                </div>
-            </section>
 
             <!-- GIFS SECTION -->
             <section id="gifs">
