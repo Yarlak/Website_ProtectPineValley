@@ -1575,6 +1575,11 @@
                 const response = await fetch(imagePath);
                 const blob = await response.blob();
                 saveAs(blob, filename);
+
+                // Send Google Analytics event
+                gtag('event', 'file_download', {
+                    'file_name': filename
+                });
             } catch (error) {
                 console.error("Error downloading image:", error);
                 alert("Failed to download image. Please try again.");
@@ -1586,6 +1591,11 @@
             const currentImage = allImages[currentImageIndex];
             const filename = currentImage.src.split('/').pop();
             downloadImage(currentImage.src, filename);
+
+            // Send Google Analytics event
+            gtag('event', 'file_download', {
+                'file_name': filename
+            });
         }
 
         // Copy embed code to clipboard
@@ -1625,6 +1635,11 @@
                 const content = await zip.generateAsync({ type: "blob" });
                 saveAs(content, "protect-pine-valley-screenshots.zip");
 
+                // Send Google Analytics event
+                gtag('event', 'file_download', {
+                    'file_name': 'protect-pine-valley-screenshots.zip'
+                });
+
                 btn.textContent = originalText;
                 btn.style.pointerEvents = "auto";
             } catch (error) {
@@ -1662,6 +1677,11 @@
                 const content = await zip.generateAsync({ type: "blob" });
                 saveAs(content, "protect-pine-valley-marketing-images.zip");
 
+                // Send Google Analytics event
+                gtag('event', 'file_download', {
+                    'file_name': 'protect-pine-valley-marketing-images.zip'
+                });
+
                 btn.textContent = originalText;
                 btn.style.pointerEvents = "auto";
             } catch (error) {
@@ -1698,6 +1718,11 @@
                 // Generate and download the zip file
                 const content = await zip.generateAsync({ type: "blob" });
                 saveAs(content, "protect-pine-valley-gifs.zip");
+
+                // Send Google Analytics event
+                gtag('event', 'file_download', {
+                    'file_name': 'protect-pine-valley-gifs.zip'
+                });
 
                 btn.textContent = originalText;
                 btn.style.pointerEvents = "auto";
@@ -1753,6 +1778,11 @@
                 // Generate and download the zip file
                 const content = await zip.generateAsync({ type: "blob" });
                 saveAs(content, "protect-pine-valley-all-images.zip");
+
+                // Send Google Analytics event
+                gtag('event', 'file_download', {
+                    'file_name': 'protect-pine-valley-all-images.zip'
+                });
 
                 btn.innerHTML = originalText;
                 btn.style.pointerEvents = "auto";
